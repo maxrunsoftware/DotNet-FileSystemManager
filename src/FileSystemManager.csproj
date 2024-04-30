@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <Title>File System Manager</Title>
+        <Description>Various tools to help organize file system files</Description>
+        <Authors>Max Run Software</Authors>
+        <Owners>$(Authors)</Owners>
+        <Copyright>(c) Max Run Software $([System.DateTime]::UtcNow.ToString(yyyy))</Copyright>
+        <VersionPrefix>1.0.0</VersionPrefix>
+
+        <PackageProjectUrl>https://github.com/maxrunsoftware/DotNet-FileSystemManager</PackageProjectUrl>
+        <PackageId>$(MSBuildProjectName)</PackageId>
+        <PackageTags>Utility</PackageTags>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>    
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Folder Include="Models\" />
+        <AvaloniaResource Include="Assets\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MaxRunSoftware.Utilities.Common" Version="*-*" />
+    </ItemGroup>
+
+    <PropertyGroup>
+        <xAvaloniaVersion>11.*</xAvaloniaVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="$(xAvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Desktop" Version="$(xAvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="$(xAvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="$(xAvaloniaVersion)" />
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(xAvaloniaVersion)" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="$(xAvaloniaVersion)" />
+    </ItemGroup>
+
+    <PropertyGroup>
+        <xMicrosoftVersion>8.*</xMicrosoftVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="$(xMicrosoftVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="$(xMicrosoftVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="$(xMicrosoftVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="$(xMicrosoftVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="$(xMicrosoftVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="$(xMicrosoftVersion)" />
+        <PackageReference Update="Microsoft.Extensions.Logging.Abstractions" Version="$(xMicrosoftVersion)" />
+        <PackageReference Include="System.IO.Hashing" Version="$(xMicrosoftVersion)" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="LiteDB" Version="5.*" />
+    </ItemGroup>
+
+</Project>
