@@ -28,15 +28,12 @@
         <AvaloniaResource Include="Assets\**" />
     </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="MaxRunSoftware.Utilities.Common" Version="*-*" />
-    </ItemGroup>
-
     <PropertyGroup>
         <xAvaloniaVersion>11.*</xAvaloniaVersion>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="$(xAvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="$(xAvaloniaVersion)" />
         <PackageReference Include="Avalonia.Desktop" Version="$(xAvaloniaVersion)" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="$(xAvaloniaVersion)" />
         <PackageReference Include="Avalonia.Fonts.Inter" Version="$(xAvaloniaVersion)" />
@@ -61,6 +58,18 @@
 
     <ItemGroup>
         <PackageReference Include="LiteDB" Version="5.*" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="MaxRunSoftware.Utilities.Common">
+        <HintPath>..\..\DotNet-MaxRunSoftware.Utilities\src\MaxRunSoftware.Utilities.Common\bin\Debug\net8.0\MaxRunSoftware.Utilities.Common.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

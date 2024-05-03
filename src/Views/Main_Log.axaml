@@ -1,0 +1,24 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:FileSystemManager.ViewModels"
+             x:DataType="vm:Main_ViewModel"
+             x:Class="FileSystemManager.Views.Main_Log">
+    <DockPanel DockPanel.Dock="Bottom">
+        <DockPanel DockPanel.Dock="Right">
+
+            <DataGrid Name="DataGrid" Margin="10" ItemsSource="{Binding Logs}"
+                      AutoGenerateColumns="True" IsReadOnly="True"
+                      GridLinesVisibility="All"
+                      BorderThickness="1" BorderBrush="Gray"
+                      CanUserResizeColumns="True"
+                      VerticalScrollBarVisibility="Visible"
+                      VerticalAlignment="Stretch">
+
+            </DataGrid>
+
+            </DockPanel>
+        </DockPanel>
+</UserControl>

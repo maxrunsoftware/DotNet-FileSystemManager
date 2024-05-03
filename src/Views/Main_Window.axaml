@@ -1,0 +1,25 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FileSystemManager.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="450"
+        xmlns:views="clr-namespace:FileSystemManager.Views"
+        x:Class="FileSystemManager.Views.Main_Window"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="FileSystemManager">
+
+    <Design.DataContext>
+        <vm:Main_ViewModel />
+    </Design.DataContext>
+    <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LastChildFill="False">
+        <StackPanel DockPanel.Dock="Top">
+            <views:Main_Menu />
+            <views:Main_Dir />
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Height="200">
+            <views:Main_Log Height="200" />
+        </StackPanel>
+    </DockPanel>
+
+</Window>

@@ -1,0 +1,15 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="FileSystemManager.Views.Main_Dir">
+    <DockPanel DockPanel.Dock="Top">
+        <DockPanel DockPanel.Dock="Right">
+            <TextBlock Margin="10 0" >Scan Directory:</TextBlock>
+            <TextBox Name="Dir_Path_TextBox" Margin="10 0" MinWidth="200" MaxWidth="800" IsReadOnly="True" />
+            <Button Name="Dir_Browse_Button" Margin="10 0" Click="Dir_Browse_Button_Click">Browse</Button>
+            <Button Name="Dir_Scan_Button" Margin="10 0" Click="Dir_Scan_Button_Click" IsEnabled="False">Scan</Button>
+        </DockPanel>
+    </DockPanel>
+</UserControl>

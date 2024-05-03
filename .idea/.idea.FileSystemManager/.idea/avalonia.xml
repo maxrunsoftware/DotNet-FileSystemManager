@@ -4,6 +4,12 @@
     <option name="projectPerEditor">
       <map>
         <entry key="FileSystemManager/Views/MainWindow.axaml" value="FileSystemManager/FileSystemManager.csproj" />
+        <entry key="src/App.axaml" value="src/FileSystemManager.csproj" />
+        <entry key="src/Views/MainWindow.axaml" value="src/FileSystemManager.csproj" />
+        <entry key="src/Views/Main_Dir.axaml" value="src/FileSystemManager.csproj" />
+        <entry key="src/Views/Main_Log.axaml" value="src/FileSystemManager.csproj" />
+        <entry key="src/Views/Main_Menu.axaml" value="src/FileSystemManager.csproj" />
+        <entry key="src/Views/Main_Window.axaml" value="src/FileSystemManager.csproj" />
       </map>
     </option>
   </component>
