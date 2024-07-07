@@ -1,13 +1,11 @@
-using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FileSystemManager;
+namespace FileSystemManager.Services;
 
 public class LogItem(int index, LogEvent logEvent)
 {
     public int Index { get; } = index;
-
     public string CategoryName => logEvent.CategoryName;
     public LogLevel LogLevel => logEvent.LogLevel;
     public DateTimeOffset Timestamp => logEvent.Timestamp;
@@ -29,7 +27,8 @@ public class LogItemCollection : ILogItemCollection
 [Service<ILoggerForwarderHandler>(ServiceLifetime.Singleton)]
 public class LogEventHandler(ILogItemCollection logItemCollection) : ILoggerForwarderHandler
 {
-    private int indexCounter = 0;
+    private int indexCounter;
+
     public void AddLogEvent(LogEvent logEvent)
     {
         //Console.WriteLine("Get LogItem");

@@ -1,0 +1,72 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FileSystemManager.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="450"
+        xmlns:views="clr-namespace:FileSystemManager.Views"
+        xmlns:viewModels="clr-namespace:FileSystemManager.ViewModels"
+        x:Class="FileSystemManager.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="FileSystemManager"
+        x:DataType="viewModels:MainWindow_ViewModel">
+
+    <Design.DataContext>
+        <vm:MainWindow_ViewModel />
+    </Design.DataContext>
+    <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LastChildFill="False">
+        <StackPanel DockPanel.Dock="Top">
+
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open..." />
+                    <Separator/>
+                    <MenuItem Header="_Exit" Click="Menu_File_Exit_Click" />
+                </MenuItem>
+                <MenuItem Header="_Edit">
+                    <MenuItem Header="Copy" />
+                    <MenuItem Header="Paste" />
+                </MenuItem>
+            </Menu>
+
+
+            <DockPanel DockPanel.Dock="Top">
+                <DockPanel DockPanel.Dock="Right">
+                    <TextBlock Margin="10 0" >Scan Directory:</TextBlock>
+                    <TextBox Name="Dir_Path_TextBox" Text="{Binding ScanDirectory}" Margin="10 0" MinWidth="200" MaxWidth="800" IsReadOnly="True" />
+                    <Button Name="Dir_Browse_Button" Margin="10 0" Click="Dir_Browse_Button_Click">Browse</Button>
+                    <Button Name="Dir_Scan_Button" Margin="10 0" Click="Dir_Scan_Button_Click" IsEnabled="{Binding Dir_Scan_Button_IsEnabled}">Scan</Button>
+                </DockPanel>
+            </DockPanel>
+
+            <DockPanel>
+                <TreeView Margin="10"
+                          ItemsSource="{Binding Nodes}"
+                          SelectedItems="{Binding SelectedNodes}"
+                          SelectionMode="Multiple">
+                    <TreeView.ItemTemplate>
+                        <TreeDataTemplate ItemsSource="{Binding SubNodes}">
+                            <Border HorizontalAlignment="Left"
+                                    BorderBrush="Gray" BorderThickness="1"
+                                    CornerRadius="5" Padding="15 3">
+                                <TextBlock Text="{Binding Title}" />
+                            </Border>
+                        </TreeDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </DockPanel>
+
+
+
+            <DockPanel DockPanel.Dock="Bottom">
+                <DockPanel DockPanel.Dock="Right">
+                    <TextBlock Margin="10 0" >Log:</TextBlock>
+                    <CheckBox Name="Log_CheckBox" Margin="10 0" MinWidth="200" MaxWidth="800" Click="Log_CheckBox_Click" />
+                </DockPanel>
+            </DockPanel>
+
+        </StackPanel>
+
+    </DockPanel>
+
+</Window>

@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FileSystemManager.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:FileSystemManager.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="FileSystemManager.Views.LogWindow"
+        Title="LogWindow"
+        x:DataType="viewModels:LogWindow_ViewModel">
+    <Design.DataContext>
+        <vm:LogWindow_ViewModel />
+    </Design.DataContext>
+
+    <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LastChildFill="False">
+
+            <DataGrid Name="DataGrid" Margin="10" ItemsSource="{Binding Logs}"
+                      AutoGenerateColumns="True" IsReadOnly="True"
+                      GridLinesVisibility="All"
+                      BorderThickness="1" BorderBrush="Gray"
+                      CanUserResizeColumns="True"
+                      VerticalScrollBarVisibility="Visible"
+                      VerticalAlignment="Stretch"
+                      RowHeight="20"
+                      >
+
+                <DataGrid.Styles>
+                    <Style Selector="TextBlock">
+                        <!-- https://github.com/AvaloniaUI/Avalonia/discussions/10207 -->
+                        <!-- <Setter Property="TextWrapping" Value="WrapWithOverflow" /> -->
+                        <!-- <Setter Property="Foreground" Value="#2563eb" /> -->
+                        <Setter Property="FontSize" Value="12" />
+
+                    </Style>
+                </DataGrid.Styles>
+
+            </DataGrid>
+
+    </DockPanel>
+
+</Window>

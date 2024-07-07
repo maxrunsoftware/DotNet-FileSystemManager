@@ -20,7 +20,7 @@
         <Nullable>enable</Nullable>
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
         <ApplicationManifest>app.manifest</ApplicationManifest>
-        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>    
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     </PropertyGroup>
 
     <ItemGroup>
@@ -63,6 +63,9 @@
     <ItemGroup>
       <Reference Include="MaxRunSoftware.Utilities.Common">
         <HintPath>..\..\DotNet-MaxRunSoftware.Utilities\src\MaxRunSoftware.Utilities.Common\bin\Debug\net8.0\MaxRunSoftware.Utilities.Common.dll</HintPath>
+      </Reference>
+      <Reference Include="MaxRunSoftware.Utilities.Microsoft">
+        <HintPath>..\..\DotNet-MaxRunSoftware.Utilities\src\MaxRunSoftware.Utilities.Microsoft\bin\Debug\net8.0\MaxRunSoftware.Utilities.Microsoft.dll</HintPath>
       </Reference>
     </ItemGroup>
 

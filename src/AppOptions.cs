@@ -3,22 +3,21 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace FileSystemManager;
 
+[Options("FileSystemManager")]
 public class AppOptions
 {
-    public static readonly string SECTION = typeof(AppOptions).Namespace!;
+    private string? settingsFile;
+    private volatile bool settingsFileDirty = true;
 
-    private static readonly ConcurrentDictionary<string, string> databaseFileCache = new();
-
-    private string databaseFile;
-
-    public required string DatabaseFile
+    public string? SettingsFile
     {
         get
         {
-            var p = databaseFile.TrimOrNull();
-            if (p == null) return p!;
-            return databaseFileCache.GetOrAdd(p, path =>
+            if (settingsFileDirty || string.IsNullOrWhiteSpace(settingsFile))
             {
+                var path = settingsFile;
+                if (string.IsNullOrWhiteSpace(path)) path = "SpecialFolder.LocalApplicationData/MaxRunSoftware/FileSystemManager.xml";
+
                 // https://johnkoerner.com/csharp/special-folder-values-on-windows-versus-mac/
                 // changed for .net8   https://learn.microsoft.com/en-us/dotnet/core/compatibility/core-libraries/8.0/getfolderpath-unix
 
@@ -37,10 +36,22 @@ public class AppOptions
 
                 var file = new FileInfo(path);
                 if (!file.Exists) Directory.CreateDirectory(file.DirectoryName!);
-                return file.FullName;
-            });
-        }
+                settingsFile = file.FullName;
+                settingsFileDirty = false;
+            }
 
-        [MemberNotNull(nameof(databaseFile))] set => databaseFile = value;
+            return settingsFile;
+        }
+        set
+        {
+            settingsFile = value;
+            settingsFileDirty = true;
+        }
     }
+
+
+
+
+
+
 }
